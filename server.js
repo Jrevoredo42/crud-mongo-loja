@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const server = express();
-
+const employeRouter = require('./src/routes/employeRoutes')
 server.listen(process.env.PORT, () => {
     console.log('Server is running')
 })
@@ -21,5 +21,6 @@ mongoose.connect(process.env.MONGODB_URI,
         }
     })
 
-
+    server.use('/api/employees', employeRouter);
+    
 module.exports = server;
