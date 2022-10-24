@@ -4,8 +4,9 @@ require('dotenv').config();
 
 const server = express();
 const employeRouter = require('./src/routes/employeRoutes')
+
 server.listen(process.env.PORT, () => {
-    console.log('Server is running')
+    console.log(`Server is running on port ${process.env.PORT}`)
 })
 
 mongoose.connect(process.env.MONGODB_URI,
@@ -20,6 +21,9 @@ mongoose.connect(process.env.MONGODB_URI,
         console.log('connected to mongoDB')
         }
     })
+    
+    server.use(express.json());
+    server.use(express.urlencoded({ extended: true }));
 
     server.use('/api/employees', employeRouter);
     

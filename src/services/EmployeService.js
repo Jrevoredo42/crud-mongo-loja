@@ -1,6 +1,5 @@
 const EmployeModel = require('../model/Employe');
 
-
 exports.getAllEmploye= async () => {
     return await EmployeModel.find();
 }

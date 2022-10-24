@@ -1,4 +1,5 @@
-const  EmployeService = require('../services/EmployeService.js')
+const  EmployeService = require('../services/EmployeService.js');
+
 
 exports.getAllEmploye = async (req, res) => {
     try {
@@ -18,6 +19,7 @@ exports.getEmployeById = async (req, res) => {
     }
 };
 
+
 exports.createEmploye = async (req, res) => {
     try {
         const employe = await EmployeService.createEmploye(req.body);
@@ -25,11 +27,12 @@ exports.createEmploye = async (req, res) => {
     } catch(err){
         res.status(500).json({ error: err.message });
     }
+
 };
 
 exports.updtadeEmploye = async (req, res) => {
     try{
-        const employe = await EmployeService.updateEmploye(req.params.id);
+        const employe = await EmployeService.updateEmploye(req.params.id, req.body);
         res.json({ data: employe, status: 'sucess' });        
     } catch(err){
         res.status(500).json({ error: err.message });

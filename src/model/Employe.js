@@ -2,11 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const EmployeSchema = new Schema({
-
-    _id: { 
-        type: mongoose.Schema.Types.ObjectId
-     },
-    name: String,
+    nome: {
+        type: String,
+        required: true
+    },
+    setor: {
+        type: Number,
+        required: true
+    },
     dateAdmiss: {
         type: Date,
         default: Date.now,
